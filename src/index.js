@@ -15,9 +15,10 @@ import './index.css';
   class Board extends React.Component {
 
     renderSquare(i) {
-      return <Square 
+      return (<Square 
         value={this.props.squares[i]} 
-        onClick={() => this.props.onClick(i)}/>;
+        onClick={() => this.props.onClick(i)}/>
+      );
     }
   
     render() { 
@@ -75,7 +76,7 @@ import './index.css';
       if (winner) {
           status = 'Winner: ' + winner;
       } else {
-          status = 'Next player: ' (this.state.xIsNext ? 'X' : 'O');
+          status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
       return (
@@ -94,6 +95,12 @@ import './index.css';
     }
   }
 
+  
+  // ========================================
+  
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<Game />);  
+
   function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -103,7 +110,7 @@ import './index.css';
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [2, 4, 6],
+      [2, 4, 6]
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
@@ -113,9 +120,5 @@ import './index.css';
     }
     return null;
   }
-  
-  // ========================================
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<Game />);
+
   
